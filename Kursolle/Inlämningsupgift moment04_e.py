@@ -17,3 +17,4 @@ s3 = int(input("Vad är värdet på sida 3?"))
 print(omkrets(s1, s2))
 print(area(s1, s2))
 print(volym(s1, s2, s3))
+    
