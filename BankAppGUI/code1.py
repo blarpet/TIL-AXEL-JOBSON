@@ -1,60 +1,61 @@
 from tkinter import *
+import tkinter
 
-window = Tk()
+window = tkinter.Tk()
 window.title("Welcome to Balls app")
 window.geometry("500x500")
+accountValue = 0
 
 
 lbl1 = Label(window, text="Is this your first time using this program?")
-lbl1.grid(column=0, row=0)
-accountValue = 0
+lbl1.pack()
 
-continue1 = False
-depsoitstart = False
-withdrawalstart = False
+entry1 = tkinter.Entry(window)
+entry1.pack()
 
-def diebitch():
-    btn1.after(0, btn1.destroy)
-    btn2.after(0, btn2.destroy)
-    lbl1.after(0, lbl1.destroy)
-    accountValue = 1000
-    continue1 = True
+def depositFunction():
+    print("deposit")
 
-def diebitch2():
-    btn1.after(0, btn1.destroy)
-    btn2.after(0, btn2.destroy)
-    lbl1.after(0, lbl1.destroy)
-    continue1 = True
-
-def deposit():
-    btn3.after(0, btn3.destroy)
-    btn4.after(0, btn4.destroy)
-    lbl2.after(0, lbl2.destroy)     
-    depsoitstart = True
-
-def withdrawal():
-    btn3.after(0, btn3.destroy)
-    btn4.after(0, btn4.destroy)
+def withdrawFunction():
     lbl2.after(0, lbl2.destroy)
-    withdrawalstart = True
+    withdrawAmount = tkinter.Entry(window)
+    withdrawAmount.pack()
 
-def clicked1():
-    print(text=window.get())
 
-btn1 = Button(window, text="YES", command=diebitch)
-btn1.grid(column=2, row=0)
+def dep_or_wit():
+    lbl2 = Label(window, text="Do you wish to withdraw or deposit?")
+    lbl2.pack()
 
-btn2 = Button(window, text="NO", command=diebitch2)
-btn2.grid(column=3, row=0)
+    depositButton = tkinter.Button(window, text="Deposit", command=depositFunction)
+    depositButton.pack()
+    withdrawButton = tkinter.Button(window, text="Withdraw", command=withdrawFunction)
+    withdrawButton.pack()
 
-if  continue1 == True:
-    lbl2 = Label(window, text="Do you wish to deposit or withdrawal?")
-    btn3 = Button(window, text="Deposit")
-    btn4 = Button(window, text="Withdrawal")
 
-if depsoitstart == True:
-    lbl3 = Label(window, text="How much do you wish to deposit?")
-    commit1 = Button(window, text="Commit", command=clicked1)
+def button_press():
+    if entry1.get() == "yes":
+        print("yes")
+        entry1.after(0, entry1.destroy)
+        lbl1.after(0, lbl1.destroy)
+        button.after(0, button.destroy)
+        accountValue = 1000
+        dep_or_wit()
+
+    elif entry1.get() == "no":
+        print("no")
+        entry1.after(0, entry1.destroy)
+        lbl1.after(0, lbl1.destroy)
+        button.after(0, button.destroy)
+        dep_or_wit()
+
+
+button = tkinter.Button(window, text="Enter", command=button_press)
+button.pack()
+
+
+
+    #lbl3 = Label(window, text="How much do you wish to deposit?")
+    #commit1 = Button(window, text="Commit", command=clicked1)
 
 
 
